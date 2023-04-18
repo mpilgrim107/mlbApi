@@ -1,0 +1,152 @@
+--Query to Add new Tables to the MLB Database
+
+CREATE TABLE team.teaminfo (
+	team_id INT NOT NULL PRIMARY KEY,
+	team_city_name VARCHAR(255),
+	team_code VARCHAR(3),
+	team_name VARCHAR(255),
+	team_location_name VARCHAR(255),
+	division VARCHAR(255),
+	division_id INT,
+	division_rank INT,
+	league CHAR(2),
+	league_id INT,
+	league_rank INT,
+	wins INT,
+	losses INT,
+	games_back VARCHAR(5),
+	home_wins INT,
+	home_games INT,
+	away_wins INT,
+	away_games INT
+); 
+
+CREATE TABLE player.playerinfo (
+	player_id INT NOT NULL PRIMARY KEY,
+	full_name VARCHAR(255),
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	init_last_name VARCHAR(255),
+	player_number VARCHAR(255),
+	player_position VARCHAR(255),
+	team_id INT,
+	team_name VARCHAR(255)
+);
+
+CREATE TABLE player.pitching (
+	id INT NOT NULL AUTO_INCREMENT,
+	player_id INT NOT NULL,
+	team_id INT NOT NULL,
+	game_date VARCHAR(255),
+	full_name VARCHAR(255),
+	home INT,
+	away INT,
+	opponent VARCHAR(255),
+	runs INT,
+	doubles INT,
+	triples INT,
+	home_runs INT,
+	strike_outs INT,
+	base_on_balls INT,
+	hits INT,
+	at_bats INT,
+	stolen_bases INT,
+	innings_pitched VARCHAR(255),
+	wins INT,
+	losses INT,
+	holds INT,
+	blown_saves INT,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE player.batting (
+	id INT NOT NULL AUTO_INCREMENT,
+	player_id INT NOT NULL,
+	team_id INT NOT NULL,
+	game_date VARCHAR(255),
+	full_name VARCHAR(255),
+	runs INT,
+	doubles INT,
+	triples INT,
+	home_runs INT,
+	strike_outs INT,
+	base_on_balls INT,
+	hits INT,
+	at_bats INT,
+	stolen_bases INT,
+	rbi INT,
+	left_on_base INT,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE team.batting (
+	id INT NOT NULL AUTO_INCREMENT,
+	team_id INT NOT NULL,
+	game_date VARCHAR(255),
+	team_name VARCHAR(255),
+	game_number INT,
+	home INT,
+	away INT,
+	opponent VARCHAR(255),
+	win INT,
+	loss INT,
+	runs INT,
+	doubles INT,
+	triples INT,
+	home_runs INT,
+	strike_outs INT,
+	base_on_balls INT,
+	hits INT,
+	average VARCHAR(255),
+	at_bats INT,
+	on_base_percentage VARCHAR(255),
+	slugging VARCHAR(255),
+	on_base_plus_slugging VARCHAR(255),
+	stolen_bases INT,
+	runs_batted_in INT,
+	left_on_base INT,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE team.pitching (
+	id INT NOT NULL AUTO_INCREMENT,
+	team_id INT NOT NULL,
+	game_date VARCHAR(255),
+	team_name VARCHAR(255),
+	game_number INT,
+	home INT,
+	away INT,
+	opponent VARCHAR(255),
+	win INT,
+	loss INT,
+	runs INT,
+	doubles INT,
+	triples INT,
+	home_runs INT,
+	strike_outs INT,
+	base_on_balls INT,
+	hits INT,
+	at_bats INT,
+	on_base_percentage VARCHAR(255),
+	stolen_bases INT,
+	era VARCHAR(255),
+	earned_runs INT,
+	pitches_thrown INT,
+	strikes INT,
+	rbi INT,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE game.pregame (
+	game_id INT NOT NULL PRIMARY KEY,
+	game_date VARCHAR(255),
+	away_id INT,
+	away_name VARCHAR(255),
+	away_prob_pitcher VARCHAR(255),
+	away_pitcher_note VARCHAR(255),
+	home_id INT,
+	home_name VARCHAR(255),
+	home_prob_pitcher VARCHAR(255),
+	home_pitcher_note VARCHAR(255),
+	venue_name VARCHAR(255)
+);
